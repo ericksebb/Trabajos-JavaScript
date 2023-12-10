@@ -34,7 +34,7 @@ p {
     background-color: #ffffff;
     color: #000;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 3s ease;
     border-radius: 20px;
     
 }
