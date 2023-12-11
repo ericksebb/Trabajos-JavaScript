@@ -1,8 +1,11 @@
 'use strict'
 
-let message = "Hola mundo"
+let message = "ecuatoriano"
 
 //alert(message[1])
 //alert(message.at(1))
 
-alert(message.indexOf("mundo"))
+
+for(let i = 0; i < message.length; i++){
+    alert(message[i])
+}
