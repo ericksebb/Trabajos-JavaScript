@@ -1,6 +1,6 @@
 'use strict'
 
-//  Datpos primitivos
+//  Datos primitivos
 
 
 //  Datos hombres
