@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Draw with Mouse</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+        // Get the canvas element
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+
+        // Set initial drawing state
+        let isDrawing = false;
+        let isErasing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        // Event listeners for mouse actions
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        // Event listener for eraser button
+        const eraserButton = document.getElementById('eraser');
+        eraserButton.addEventListener('click', toggleEraser);
+
+        // Event listener for 'keydown' event
+        document.addEventListener('keydown', handleKeyDown);
+
+        function startDrawing(e) {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+
+            if (isErasing) {
+                context.clearRect(e.offsetX, e.offsetY, 10, 10);
+            } else {
+                context.beginPath();
+                context.moveTo(lastX, lastY);
+                context.lineTo(e.offsetX, e.offsetY);
+                context.stroke();
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            }
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        function toggleEraser() {
+            isErasing = !isErasing;
+            eraserButton.classList.toggle('active');
+        }
+
+        function handleKeyDown(e) {
+            if (e.key === 'x') {
+                toggleEraser();
+            }
+        }
+    </script>
+</body>
+</html>
