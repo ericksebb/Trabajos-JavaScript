@@ -1,0 +1,64 @@
+/* 'use strict'
+
+class Vehicle{
+    constructor(OEM, price, color){
+    this.OEM = OEM;
+    this.price = price;
+    this.color = color;
+}
+girar(){
+    alert("girando")
+}
+frenar(){
+    alert("Frenando")
+}
+}
+let vehicle1 = new Vehicle("Hyundai", 25000, "White");
+
+vehicle1.girar
+vehicle1.frenar
+ */
+
+class User{
+    constructor(username, email, password){
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+    login(username, password){
+        if(username===this.username && password===this.password){
+            alert("Login successful")
+        }        
+        else{
+            alert("The username or password are incorrect. Please try again.")
+        }
+    }
+    resetPassword(){
+        let newPassword = prompt("Please enter your new password");
+        this.password = newPassword;
+        alert(`your new password is: ${this.password}`)
+    }
+
+    updateInfo(){
+        let newUsername = prompt("Please enter your new username, leave empty if you don't want to change it.");
+        let newEmail = prompt("Please enter your new email, leave empty if you don't want to change it.");
+        if(newUsername !== ""){
+            this.username = newUsername;
+        }
+        if(newEmail !== ""){
+            this.email = newEmail;
+        }
+        alert(`Your new username is: ${this.username}, and your new email is: ${this.email}`)
+    }
+
+    showInfo(){
+        alert(`Username: ${this.username}, Email: ${this.email}, Password: ${this.password}`)
+    }
+}
+
+let user1 = new User("ericsebb", "ericsebb@duck.com", "Hola mundo!");
+
+user1.login("ericsebb", "Hola mundo!");
+user1.resetPassword();
+user1.updateInfo();
+user1.showInfo();
