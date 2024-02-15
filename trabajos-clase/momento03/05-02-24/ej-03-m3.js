@@ -1,24 +1,6 @@
-/* 'use strict'
+'use strict'
 
-class Vehicle{
-    constructor(OEM, price, color){
-    this.OEM = OEM;
-    this.price = price;
-    this.color = color;
-}
-girar(){
-    alert("girando")
-}
-frenar(){
-    alert("Frenando")
-}
-}
-let vehicle1 = new Vehicle("Hyundai", 25000, "White");
-
-vehicle1.girar
-vehicle1.frenar
- */
-
+// User con utilidades para login, resetear contraseña, actualizar información y mostrar información 
 class User{
     constructor(username, email, password){
         this.username = username;
@@ -61,4 +43,42 @@ let user1 = new User("ericsebb", "ericsebb@duck.com", "Hola mundo!");
 user1.login("ericsebb", "Hola mundo!");
 user1.resetPassword();
 user1.updateInfo();
-user1.showInfo();
+user1.showInfo(); 
+
+// Product con utilidades para añadir stock, reducir stock, actualizar precio y mostrar información
+
+class Product{
+    constructor(name, price, stock){
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+    updatePrice(newPrice){
+        this.price = newPrice;
+        alert(`The price of ${this.name} has been updated to $${this.price}`)
+    }
+    addStock(quantity){
+        this.stock += quantity;
+        alert(`The stock of ${this.name} has been updated to ${this.stock}`)
+    }
+    reduceStock(quantity){ 
+        if(quantity > this.stock){  // Al no existir un stock negativo, utilicé un if para evitar que el stock baje de 0
+
+            alert("There's not enough stock to do that.") 
+        } 
+        else{
+            this.stock -= quantity;
+            alert(`The stock of ${this.name} has been updated to ${this.stock}`)
+        }
+    }
+    showInfo(){
+        alert(`Product: ${this.name}, Price: $${this.price}, Stock: ${this.stock}`)
+    }
+}
+
+let product1 = new Product("HP Pavillion", 1000, 5);
+product1.showInfo();
+product1.addStock(10);
+product1.reduceStock(3);
+product1.updatePrice(1200);
+product1.showInfo();
